@@ -18,11 +18,12 @@ assetic:
     debug:          %kernel.debug%
     use_controller: false
     filters:
-        cssrewrite: ~
-        less:
-            node: %node_bin%
-            node_paths: [ %node_modules% ]
-            apply_to: '\.less$'
+        uglifyjs2:
+            bin: %node_modules%uglify-js/bin/uglifyjs
+            apply_to: '\.js$'
+        uglifycss:
+            bin: %node_modules%uglifycss/uglifycss
+            apply_to: '\.css$'
 
 monolog:
     handlers:
