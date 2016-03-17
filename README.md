@@ -1,4 +1,5 @@
-nblfeed-dev.neblion.net
-=======================
+Neblion/baseapp Symfony2 app
+============================
 
-A Symfony project created on February 5, 2016, 6:02 pm.
+Neblion/baseapp is a Symfony2 base application on top on symfony/framework-standard-edition.
+Working in progress, no stable release yet....
