@@ -30,7 +30,8 @@
         "symfony/assetic-bundle": "^2.7",
         "stof/doctrine-extensions-bundle": "^1.2",
         "doctrine/doctrine-migrations-bundle": "^1.0",
-        "guzzlehttp/guzzle": "6.1.*"
+        "guzzlehttp/guzzle": "6.1.*",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
