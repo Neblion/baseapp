@@ -1,0 +1,186 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use AppBundle\Util\CreateUpdateTrait;
+
+/**
+ * ItemAccount
+ *
+ * @ORM\Table(name="item_account")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ItemAccountRepository")
+ */
+class ItemAccount
+{
+    use CreateUpdateTrait;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Account", inversedBy="items")
+     * @ORM\JoinColumn(name="account_id", referencedColumnName="id", nullable=false)
+     */
+    protected $account;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isRead", type="boolean")
+     */
+    private $isRead;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isKept", type="boolean")
+     */
+    private $isKept;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set isRead
+     *
+     * @param boolean $isRead
+     *
+     * @return ItemAccount
+     */
+    public function setIsRead($isRead)
+    {
+        $this->isRead = $isRead;
+
+        return $this;
+    }
+
+    /**
+     * Get isRead
+     *
+     * @return bool
+     */
+    public function getIsRead()
+    {
+        return $this->isRead;
+    }
+
+    /**
+     * Set isKept
+     *
+     * @param boolean $isKept
+     *
+     * @return ItemAccount
+     */
+    public function setIsKept($isKept)
+    {
+        $this->isKept = $isKept;
+
+        return $this;
+    }
+
+    /**
+     * Get isKept
+     *
+     * @return bool
+     */
+    public function getIsKept()
+    {
+        return $this->isKept;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return ItemAccount
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return ItemAccount
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Set account
+     *
+     * @param \AppBundle\Entity\Account $account
+     *
+     * @return ItemAccount
+     */
+    public function setAccount(\AppBundle\Entity\Account $account)
+    {
+        $this->account = $account;
+
+        return $this;
+    }
+
+    /**
+     * Get account
+     *
+     * @return \AppBundle\Entity\Account
+     */
+    public function getAccount()
+    {
+        return $this->account;
+    }
+
+    /**
+     * Set creator
+     *
+     * @param \AppBundle\Entity\Account $creator
+     *
+     * @return ItemAccount
+     */
+    public function setCreator(\AppBundle\Entity\Account $creator = null)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Set updater
+     *
+     * @param \AppBundle\Entity\Account $updater
+     *
+     * @return ItemAccount
+     */
+    public function setUpdater(\AppBundle\Entity\Account $updater = null)
+    {
+        $this->updater = $updater;
+
+        return $this;
+    }
+}

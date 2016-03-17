@@ -1,0 +1,217 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use AppBundle\Util\CreateUpdateTrait;
+
+/**
+ * Item
+ *
+ * @ORM\Table(name="item")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ItemRepository")
+ */
+class Item
+{
+    use CreateUpdateTrait;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Feed", inversedBy="items")
+     * @ORM\JoinColumn(name="feed_id", referencedColumnName="id", nullable=false)
+     */
+    protected $feed;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text")
+     */
+    private $text;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uri", type="text")
+     */
+    private $uri;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Item
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set text
+     *
+     * @param string $text
+     *
+     * @return Item
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * Get text
+     *
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
+     * Set uri
+     *
+     * @param string $uri
+     *
+     * @return Item
+     */
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
+
+        return $this;
+    }
+
+    /**
+     * Get uri
+     *
+     * @return string
+     */
+    public function getUri()
+    {
+        return $this->uri;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Item
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return Item
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Set feed
+     *
+     * @param \AppBundle\Entity\Feed $feed
+     *
+     * @return Item
+     */
+    public function setFeed(\AppBundle\Entity\Feed $feed)
+    {
+        $this->feed = $feed;
+
+        return $this;
+    }
+
+    /**
+     * Get feed
+     *
+     * @return \AppBundle\Entity\Feed
+     */
+    public function getFeed()
+    {
+        return $this->feed;
+    }
+
+    /**
+     * Set creator
+     *
+     * @param \AppBundle\Entity\Account $creator
+     *
+     * @return Item
+     */
+    public function setCreator(\AppBundle\Entity\Account $creator = null)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Set updater
+     *
+     * @param \AppBundle\Entity\Account $updater
+     *
+     * @return Item
+     */
+    public function setUpdater(\AppBundle\Entity\Account $updater = null)
+    {
+        $this->updater = $updater;
+
+        return $this;
+    }
+}

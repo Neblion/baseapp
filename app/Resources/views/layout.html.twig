@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="NblBaseApp">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets 
+                '%kernel.root_dir%/../app/Resources/less/build-%bootswatch_theme%.less'
+                '%kernel.root_dir%/../vendor/frontend/toastr/toastr.min.css'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+            <style>
+                body {
+                    padding-top: 65px;
+                }
+            </style>
+        {% endblock stylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% include 'navbar.html.twig' %}
+        
+        <div class="container-fluid">
+            {% block body %}{% endblock %}
+        </div>
+        
+        {% block javascripts %}
+            {% javascripts
+                '%kernel.root_dir%/../vendor/frontend/jquery/dist/jquery.min.js'
+                '%kernel.root_dir%/../vendor/frontend/bootstrap/dist/js/bootstrap.min.js'
+                '%kernel.root_dir%/../vendor/frontend/jquery-ui/jquery-ui.min.js'
+                '%kernel.root_dir%/../vendor/frontend/toastr/toastr.min.js'
+                '%kernel.root_dir%/../vendor/frontend/bootbox.js/bootbox.js'
+                '%kernel.root_dir%/Resources/js/layout.js'
+            %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+        
+        <div class="modal fade" id="NblBaseAppModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div id="NblBaseAppModal-content" class="modal-content"></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use AppBundle\Util\CreateUpdateTrait;
+
+/**
+ * ChannelFeed
+ *
+ * @ORM\Table(name="channel_feed")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ChannelFeedRepository")
+ */
+class ChannelFeed
+{
+    use CreateUpdateTrait;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Channel", inversedBy="channelFeeds")
+     * @ORM\JoinColumn(name="channel_id", referencedColumnName="id", nullable=false)
+     */
+    protected $channel;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Feed", inversedBy="channelFeeds")
+     * @ORM\JoinColumn(name="feed_id", referencedColumnName="id", nullable=false)
+     */
+    protected $feed;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+
